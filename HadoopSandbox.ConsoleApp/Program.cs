@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.Hadoop.MapReduce;
 
 namespace HadoopSandbox.ConsoleApp
@@ -9,13 +11,25 @@ namespace HadoopSandbox.ConsoleApp
     {
         private static void Main(string[] args)
         {
-            var hadoop = Hadoop.Connect(
-                new Uri("https://sergiirud.azurehdinsight.net"),
-                "admin", "hdp", "admin", "sergiirud.blob.core.windows.net",
-                "VnYzB0FhQ6JSwrWF2e/i2xTQ8u5WOkuy2qLopcWgp5ap7V+vfzmoaHBs/HY+tMExWz+qtc9A9IxuhS8RIX4t4w==",
-                "sergiirud", false);
-            
-            hadoop.MapReduceJob.ExecuteJob<ProcessingJob>();
+            Environment.SetEnvironmentVariable("HADOOP_HOME", "abc");
+            Environment.SetEnvironmentVariable("JAVA_HOME", "abc");
+
+            //Environment.SetEnvironmentVariable("HADOOP_HOME", @"C:\apps1\dist\hadoop-2.7.1.2.3.3.1-25");
+            //Environment.SetEnvironmentVariable("JAVA_HOME", @"C:\apps1\dist\java");
+
+            var hadoop = Hadoop.MakeAzure(
+                new Uri("https://sergeyrud.azurehdinsight.net"),
+                "sergeyrud", "sergeyrud", "Password1!", "sergeyrud.blob.core.windows.net",
+                "D8P7p1KoEvb/aMtfNmYvVwZ2h3p2JW9GMUao2G7y/hKILCAziAWEQ3uw28kISa5TEs/cO+fI9iE6a3AnP6Hkbw==",
+                "sergeyrud", false);
+            try
+            {
+                hadoop.MapReduceJob.ExecuteJob<ProcessingJob>();
+            }
+            catch (AggregateException e) when (e.InnerExceptions.SingleOrDefault() is HttpRequestException)
+            {
+                Console.WriteLine("Master, it happened. Again.");
+            }
         }
 
         public class Mapper : MapperBase
@@ -34,7 +48,7 @@ namespace HadoopSandbox.ConsoleApp
 
                 values.ToList().ForEach(v => totalCount += int.Parse(v));
 
-                context.EmitKeyValue("key", totalCount.ToString());
+                context.EmitKeyValue(key, "- Total count: " + totalCount);
             }
         }
 
@@ -44,9 +58,9 @@ namespace HadoopSandbox.ConsoleApp
             {
                 var config = new HadoopJobConfiguration
                 {
-                    InputPath = "asv://sergiirud@sergiirud.blob.core.windows.net/input",
-                    OutputFolder = "asv://sergiirud@sergiirud.blob.core.windows.net/output",
-                    DeleteOutputFolder = true
+                    InputPath = "wasb://sergeyrud@sergeyrud.blob.core.windows.net/input",
+                    OutputFolder = "wasb://sergeyrud@sergeyrud.blob.core.windows.net/output",
+                    DeleteOutputFolder = false
                 };
 
                 return config;

@@ -43,7 +43,6 @@ C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\bin\Debug\ko\Syste
 C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\bin\Debug\ru\System.Spatial.resources.dll
 C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\bin\Debug\zh-Hant\System.Spatial.resources.dll
-C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\obj\Debug\HadoopSandbox.ConsoleApp.csprojResolveAssemblyReference.cache
 C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\bin\Debug\Microsoft.WindowsAzure.Configuration.dll
 C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\bin\Debug\Microsoft.WindowsAzure.Storage.dll
 C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\bin\Debug\System.Net.Http.dll
@@ -60,3 +59,4 @@ C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\bin\Debug\MRLib\Mi
 C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\bin\Debug\MRLib\Microsoft.Hadoop.ReduceDriver.exe
 C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\bin\Debug\MRLib\Microsoft.WindowsAzure.Management.Framework.Threading.dll
 C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\bin\Debug\MRLib\MRRunner.exe
+C:\Data\Nowork\Samples\HadoopSandbox\HadoopSandbox.ConsoleApp\obj\Debug\HadoopSandbox.ConsoleApp.csprojResolveAssemblyReference.cache
